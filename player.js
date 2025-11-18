@@ -349,7 +349,7 @@ export class Player {
                 this.stuckTimer = 0;
             }
             
-            if (this.stuckTimer > 0.5) {
+            if (this.stuckTimer > 0.8) { // Increased threshold to make it less frequent
                 applyWiggle(this, gameMap);
             }
 

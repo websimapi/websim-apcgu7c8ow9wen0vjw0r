@@ -91,7 +91,7 @@ export function updateMoveToTarget(player, deltaTime, gameMap) {
 }
 
 export function applyWiggle(player, gameMap) {
-    const wiggleAmount = 0.1; // A small nudge
+    const wiggleAmount = 0.05; // A smaller, more subtle nudge
     const wiggleAngle = Math.random() * 2 * Math.PI;
 
     const proposedX = player.pixelX + Math.cos(wiggleAngle) * wiggleAmount;
@@ -106,10 +106,9 @@ export function applyWiggle(player, gameMap) {
         // console.log(`[${player.username}] wiggled out of a stuck spot.`);
     }
 
-    // Reset timer slightly to prevent constant wiggling and allow movement to re-engage
-    if (player.stuckTimer > 0.7) {
-        player.stuckTimer = 0.4;
-    }
+    // Reset timer completely to prevent constant wiggling.
+    // The main update loop will restart the timer if the player remains stuck.
+    player.stuckTimer = 0;
 }
 
 
